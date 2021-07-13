@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 //Style Imports//
 import './Home.css'
@@ -6,8 +6,27 @@ import FilterList from '@material-ui/icons/FilterList'
 import Search from '@material-ui/icons/Search'
 import Sort from '@material-ui/icons/Sort'
 import Product from '../Product/Product'
+import API from '../../utils/axios'
 
 function Home() {
+  //Product list state (retreived from fake store API)//
+  const [products, setProducts] = useState([])
+
+  //Calls product request to API on page load (componentDidMount)
+  useEffect(() => {
+    loadProducts()
+  }, [])
+
+  async function loadProducts() {
+    try {
+      const response = await API.getAllProducts()
+      setProducts(response.data)
+      console.log(products)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="home">
       <form className="filter__container">
