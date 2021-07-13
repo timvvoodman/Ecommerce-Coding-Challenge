@@ -51,11 +51,14 @@ function Home() {
         </div>
       </form>
       <div className="product__container">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {products?.map((product) => (
+          <Product
+            key={product.id}
+            title={product.title}
+            image={product.image}
+            price={product.price}
+          />
+        ))}
       </div>
       {/* <Product id="" title="" price={29.99} image="" /> */}
     </div>

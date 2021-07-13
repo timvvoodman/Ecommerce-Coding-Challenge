@@ -17,7 +17,7 @@
   /* Box */
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 20px;
   padding: 0 10px;
   /* Typogrpahy */
@@ -30,6 +30,7 @@
 @media (min-width: 769px) {
   .filter__container {
     justify-content: space-between;
+    margin-right: 50px;
   }
 }
 
@@ -37,8 +38,16 @@
   display: flex;
 }
 
+.filter,
+.sort {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
 .filter__item {
-  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product__container {
@@ -58,6 +67,7 @@
 @media (min-width: 769px) {
   .product__container {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 

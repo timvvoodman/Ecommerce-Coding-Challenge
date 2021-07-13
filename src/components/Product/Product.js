@@ -3,20 +3,17 @@ import React from 'react'
 //Style Imports//
 import './Product.css'
 
-function Product() {
+function Product({ title, image, price }) {
   return (
     <div className="product">
       <div className="product__info">
-        <p>Backpack</p>
+        <p>{title}</p>
         <p className="product__price">
           <small>$</small>
-          <strong>109.95</strong>
+          <strong>{price}</strong>
         </p>
       </div>
-      <img
-        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-        alt="backpack"
-      />
+      <img src={image} alt={title} />
       <button className="product__btn">Add to Cart</button>
     </div>
   )

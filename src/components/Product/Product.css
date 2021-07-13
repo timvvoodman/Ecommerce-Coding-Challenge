@@ -14,6 +14,7 @@
   padding: 10px;
   max-height: 400px;
   min-width: 100px;
+  max-width: 350px;
   /* Visual */
   background-color: var(--bg-secondary-color);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
@@ -22,9 +23,11 @@
 .product__info {
   height: 100px;
   margin-bottom: 15px;
+  text-align: center;
 }
 .product__price {
   margin-top: 5px;
+  text-align: start;
 }
 
 .product > img {
