@@ -1,9 +1,3 @@
-/* Position */
-/* Box */
-/* Typogrpahy */
-/* Visual */
-/* Misc */
-
 .header {
   /* Position */
   position: sticky;
@@ -14,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
   /* Visual */
-  background-color: var(--bg-secondary-color);
+  background-color: var(--bg-primary-color);
   /* Misc */
   z-index: 100;
 }
