@@ -1,0 +1,67 @@
+/* Position */
+/* Box */
+/* Typogrpahy */
+/* Visual */
+/* Misc */
+
+.header {
+  /* Position */
+  position: sticky;
+  top: 0;
+  /* Box */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Visual */
+  background-color: var(--bg-secondary-color);
+  /* Misc */
+  z-index: 100;
+}
+
+.header__logo {
+  /* Box */
+  margin-left: 10px;
+  /* Typogrpahy */
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--font-primary-color);
+
+  /* Misc */
+  cursor: pointer;
+}
+
+.header__basket {
+  /* Position */
+  /* Box */
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  /* Visual */
+  color: var(--font-primary-color);
+  /* Misc */
+  cursor: pointer;
+}
+
+.header__basket__count {
+  /* Position */
+  /* Box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  padding: 4px;
+  /* Typogrpahy */
+  text-decoration: none;
+  font-weight: 600;
+
+  color: var(--bg-primary-color);
+  /* Visual */
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  /* Misc */
+}
