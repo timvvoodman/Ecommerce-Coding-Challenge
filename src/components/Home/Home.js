@@ -7,6 +7,7 @@ import Search from '@material-ui/icons/Search'
 import Sort from '@material-ui/icons/Sort'
 import Product from '../Product/Product'
 import API from '../../utils/axios'
+import Filter from '../Filter/Filter'
 
 function Home() {
   //////////STATE DEFINITIONS//////////
@@ -19,6 +20,15 @@ function Home() {
 
   //Value for product search term state
   const [search, setSearch] = useState('')
+
+  //Price sort state
+  const [priceSort, setPriceSort] = useState({
+    lowToHigh: false,
+    highToLow: false,
+  })
+
+  //conditional render of filter state
+  const [filterComponent, setFilterComponent] = useState(true)
 
   /////////END STATE DEFINITIONS////////
 
@@ -69,6 +79,36 @@ function Home() {
     })
   }
 
+  /////PRICE SORT/////
+  function sortByPrice() {
+    if (
+      (priceSort.highToLow === false && priceSort.lowToHigh === false) ||
+      priceSort.highToLow === true
+    ) {
+      setPriceSort({ lowToHigh: true, highToLow: false })
+      setProducts({
+        ...products,
+        filteredResults: products.filteredResults.sort((a, b) => {
+          return parseFloat(a.price) - parseFloat(b.price)
+        }),
+      })
+    }
+    if (priceSort.lowToHigh === true) {
+      setPriceSort({
+        lowToHigh: false,
+        highToLow: true,
+      })
+      setProducts({
+        ...products,
+        filteredResults: products.filteredResults.sort((a, b) => {
+          return parseFloat(b.price) - parseFloat(a.price)
+        }),
+      })
+    }
+    console.log(priceSort)
+  }
+  /////END PRICE SORT/////
+
   return (
     <div className="home">
       <form className="filter__container">
@@ -82,20 +122,25 @@ function Home() {
           ></input>
         </div>
         <div className="drop__items">
-          <div className=" filter__item filter">
-            <p>Sort</p>
-            <FilterList />
+          <div className=" filter__item filter" onClick={sortByPrice}>
+            <p>Price</p>
+            <FilterList
+              className={`filter__icon ${priceSort.lowToHigh ? 'rotate' : ''}`}
+            />
           </div>
 
           <div className=" filter__item sort">
             <p>Filter</p>
-            <Sort />
+            <Sort onClick={() => setFilterComponent(!filterComponent)} />
           </div>
           <button onClick={resetSearch} className="filter__reset">
             Reset
           </button>
         </div>
       </form>
+
+      {filterComponent && <Filter />}
+
       <div className="product__container">
         {products.filteredResults?.map((product) => (
           <Product
