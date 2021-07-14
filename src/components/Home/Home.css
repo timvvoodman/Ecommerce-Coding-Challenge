@@ -36,6 +36,8 @@
 
 .drop__items {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter,
@@ -48,6 +50,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.filter__reset {
+  /* Box */
+  height: 25px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-right: 5px;
+  /* Typogrpahy */
+  font-size: 14px;
+  /* Visual */
+  border: none;
+  border-radius: 10px;
+  background-color: var(--accent-green);
+  color: var(--bg-primary-color);
+  /* Misc */
 }
 
 .product__container {
@@ -87,6 +105,8 @@
   margin-left: 5px;
   padding: 5px;
   /* Typogrpahy */
+  font-family: inherit;
+  font-style: italic;
   /* Visual */
   outline: none;
   border-radius: 5px;

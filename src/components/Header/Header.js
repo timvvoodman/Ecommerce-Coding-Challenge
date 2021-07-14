@@ -14,7 +14,7 @@ function Header() {
           className="header__logo"
           style={{ textDecoration: 'none' }}
         >
-          <h1>General Store</h1>
+          <h1>THINGS & STUFF</h1>
         </Link>
 
         <Link to="/checkout" style={{ textDecoration: 'none' }}>
