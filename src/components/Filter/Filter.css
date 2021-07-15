@@ -1,0 +1,52 @@
+/* Position */
+/* Box */
+/* Typogrpahy */
+/* Visual */
+/* Misc */
+
+.filter__form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  height: 50px;
+}
+
+@media (max-width: 769px) {
+  .filter__form__container {
+    /* Box */
+    padding-top: 10px;
+    justify-content: center;
+    /* Visual */
+  }
+}
+
+.filter__form {
+  /* Box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.filter__form label {
+  height: 0;
+}
+
+.filter__form select {
+  /* Box */
+  padding: 5px 10px !important;
+  /* Typogrpahy */
+  font-weight: bold;
+  /* Visual */
+  border-radius: 5px;
+  background-color: var(--bg-primary-color) !important;
+}
+
+.category {
+  /* Box */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 10px;
+}

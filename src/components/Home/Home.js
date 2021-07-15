@@ -11,43 +11,34 @@ import Filter from '../Filter/Filter'
 
 function Home() {
   //////////STATE DEFINITIONS//////////
-
   //Product list state (retreived from fake store API)
   const [products, setProducts] = useState({
     results: [],
     filteredResults: [],
   })
 
-  //Value for product search term state
+  //Search Term
   const [search, setSearch] = useState('')
 
-  //Price sort state
+  //Price sort Toggle
   const [priceSort, setPriceSort] = useState({
     lowToHigh: false,
     highToLow: false,
   })
 
-  //conditional render of filter state
-  const [filterComponent, setFilterComponent] = useState(true)
-
+  //filter component and rule holders
+  const [filterComponent, setFilterComponent] = useState(false)
+  const [categoryRule, setCategoryRule] = useState('')
+  const [priceRule, setPriceRule] = useState('')
   /////////END STATE DEFINITIONS////////
 
   /////COMPONENT LIFECYCLE METHODS//////
-
   //Calls product request to API on page load (componentDidMount)
   useEffect(() => {
     loadProducts()
   }, [])
 
-  useEffect(() => {
-    setProducts({
-      ...products,
-      filteredResults: products.filteredResults.filter((product) => {
-        return product.title.toLowerCase().includes(search)
-      }),
-    })
-  }, [search])
-
+  //API call to get product data
   async function loadProducts() {
     try {
       const response = await API.getAllProducts()
@@ -58,11 +49,42 @@ function Home() {
     } catch (error) {
       console.log(error)
     }
-    console.log(products.filteredResults)
   }
 
-  //////////PRODUCT SEARCH FUNCTIONALITY//////////
+  //updates products list to display based on user search, sort, filter
+  //Search
+  useEffect(() => {
+    setProducts({
+      ...products,
+      filteredResults: products.filteredResults.filter((product) => {
+        return product.title.toLowerCase().includes(search)
+      }),
+    })
+  }, [search])
+  //Filter Category////////////////////
+  useEffect(() => {
+    console.log(categoryRule)
+    setProducts({
+      ...products,
+      filteredResults: products.filteredResults.filter((product) => {
+        return product.category === categoryRule
+      }),
+    })
+  }, [categoryRule])
+  //Filter Price///////////////////////
+  useEffect(() => {
+    const checkedValue = parseInt(priceRule)
 
+    setProducts({
+      ...products,
+      filteredResults: products.filteredResults.filter((product) => {
+        return product.price >= checkedValue
+      }),
+    })
+  }, [priceRule])
+  /////END COMPONENT LIFECYCLE METHODS////////////
+
+  //////////PRODUCT SEARCH FUNCTIONALITY//////////
   //Update search state when user enters search term
   function handleSearchInput(event) {
     const input = event.target.value.toLowerCase()
@@ -76,6 +98,10 @@ function Home() {
       ...products,
       filteredResults: products.results,
       search: '',
+    })
+    setCategoryRule({
+      category: '',
+      price: '',
     })
   }
 
@@ -105,9 +131,20 @@ function Home() {
         }),
       })
     }
-    console.log(priceSort)
   }
   /////END PRICE SORT/////
+
+  ///PRODUCT FILTER FUNCTIONALITY///
+
+  //get  and set as filter rules
+  function getFilterRules(event, name) {
+    if (name === 'category') {
+      setCategoryRule(event.target.value)
+    }
+    if (name === 'price') {
+      setPriceRule(event.target.value)
+    }
+  }
 
   return (
     <div className="home">
@@ -139,7 +176,7 @@ function Home() {
         </div>
       </form>
 
-      {filterComponent && <Filter />}
+      {filterComponent ? <Filter onChange={getFilterRules} /> : null}
 
       <div className="product__container">
         {products.filteredResults?.map((product) => (
@@ -151,7 +188,6 @@ function Home() {
           />
         ))}
       </div>
-      {/* <Product id="" title="" price={29.99} image="" /> */}
     </div>
   )
 }

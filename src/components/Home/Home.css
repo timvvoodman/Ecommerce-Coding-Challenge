@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding: 0 10px;
   /* Typogrpahy */
   color: var(--font-primary-color);
@@ -97,12 +97,10 @@
   }
 }
 
-.search {
+.search__input {
   /* Position */
   /* Box */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 115px;
   /* Typogrpahy */
   /* Visual */
   /* Misc */
