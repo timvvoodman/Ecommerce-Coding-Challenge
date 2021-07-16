@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useStateValue } from '../../Context/AppState'
 import './Home.css'
 import FilterList from '@material-ui/icons/FilterList'
@@ -8,67 +8,20 @@ import Product from '../Product/Product'
 import Filter from '../Filter/Filter'
 
 function Home() {
-  //////////STATE DEFINITIONS//////////
-  //Get reducer state
-  const [{ productsCopy }] = useStateValue()
-
+  //Get reducer and Global State
+  const [{ productsCopy, priceSortToggle }, dispatch] = useStateValue()
   //Search Term
   const [search, setSearch] = useState('')
-
-  //Price sort Toggle
-  const [priceSort, setPriceSort] = useState({
-    lowToHigh: false,
-    highToLow: false,
-  })
-
   //filter component and rule holders
   const [filterComponent, setFilterComponent] = useState(false)
-  const [categoryRule, setCategoryRule] = useState('')
-  const [priceRule, setPriceRule] = useState('')
-  /////////END STATE DEFINITIONS////////
 
-  //////COMPONENT LIFECYCLE METHODS////////
-  //updates products list to display based on user search, sort, filter
-  //Search
-  // useEffect(() => {
-  //   setProducts({
-  //     ...products,
-  //     filteredResults: products.filteredResults.filter((product) => {
-  //       return product.title.toLowerCase().includes(search)
-  //     }),
-  //   })
-  // }, [search])
-  /////////////////Filter Category////////////////////
-  // useEffect(() => {
-  //   console.log(categoryRule)
-  //   setProducts({
-  //     ...products,
-  //     filteredResults: products.filteredResults.filter((product) => {
-  //       return product.category === categoryRule
-  //     }),
-  //   })
-  // }, [categoryRule])
-  //Filter Price///////////////////////
-  // useEffect(() => {
-  //   const checkedValue = parseInt(priceRule)
-
-  //   setProducts({
-  //     ...products,
-  //     filteredResults: products.filteredResults.filter((product) => {
-  //       return product.price >= checkedValue
-  //     }),
-  //   })
-  // }, [priceRule])
-  /////END COMPONENT LIFECYCLE METHODS////////////
-
-  //////////PRODUCT SEARCH FUNCTIONALITY//////////
   //Update search state when user enters search term
   function handleSearchInput(event) {
     const input = event.target.value.toLowerCase()
     setSearch(input)
     console.log(search)
   }
-  //conditional render based on search term
+  //Conditional render based on search term
   function searchFilter() {
     //holds items in products state that incule matched search string
     const filtered = productsCopy.filter((product) => {
@@ -97,6 +50,11 @@ function Home() {
     }
   }
 
+  //Toggle price sort
+  function sortByPrice() {
+    dispatch({ type: 'TOGGLE_PRICE_SORT' })
+  }
+
   ////reset search
   // function resetSearch() {
   //   setProducts({
@@ -109,47 +67,9 @@ function Home() {
   //     price: '',
   //   })
   // }
-
-  /////PRICE SORT/////
-  // function sortByPrice() {
-  //   if (
-  //     (priceSort.highToLow === false && priceSort.lowToHigh === false) ||
-  //     priceSort.highToLow === true
-  //   ) {
-  //     setPriceSort({ lowToHigh: true, highToLow: false })
-  //     setProducts({
-  //       ...products,
-  //       filteredResults: products.filteredResults.sort((a, b) => {
-  //         return parseFloat(a.price) - parseFloat(b.price)
-  //       }),
-  //     })
-  //   }
-  //   if (priceSort.lowToHigh === true) {
-  //     setPriceSort({
-  //       lowToHigh: false,
-  //       highToLow: true,
-  //     })
-  //     setProducts({
-  //       ...products,
-  //       filteredResults: products.filteredResults.sort((a, b) => {
-  //         return parseFloat(b.price) - parseFloat(a.price)
-  //       }),
-  //     })
-  //   }
-  // }
-  /////END PRICE SORT/////
+  ////////////END SEARCH FUNCTIONALITY//////////
 
   ///PRODUCT FILTER FUNCTIONALITY///
-
-  //get  and set as filter rules
-  function getFilterRules(event, name) {
-    if (name === 'category') {
-      setCategoryRule(event.target.value)
-    }
-    if (name === 'price') {
-      setPriceRule(event.target.value)
-    }
-  }
 
   return (
     <div className="home">
@@ -164,10 +84,10 @@ function Home() {
           ></input>
         </div>
         <div className="drop__items">
-          <div className=" filter__item filter">
+          <div className=" filter__item filter" onClick={sortByPrice}>
             <p>Price</p>
             <FilterList
-              className={`filter__icon ${priceSort.lowToHigh ? 'rotate' : ''}`}
+              className={`filter__icon ${priceSortToggle ? 'rotate' : ''}`}
             />
           </div>
 
@@ -179,7 +99,7 @@ function Home() {
         </div>
       </form>
 
-      {filterComponent ? <Filter onChange={getFilterRules} /> : null}
+      {filterComponent ? <Filter /> : null}
 
       <div className="product__container">{searchFilter()}</div>
     </div>
