@@ -14,10 +14,10 @@ function CartItem({ id, title, image, price, description, category }) {
   }
 
   return (
-    <div className="checkoutProduct">
-      <img className="checkoutProduct-image" src={image} alt={title} />
-      <div className="checkoutProduct-info">
-        <p className="checkoutProduct-title">{title}</p>
+    <div className="checkout__product">
+      <img className="checkout__product__image" src={image} alt={title} />
+      <div className="checkout__product__info">
+        <p className="checkout__product__title">{title}</p>
         <p>
           <small>$</small>
           <strong>{price}</strong>
