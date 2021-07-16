@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Ecommerce-Coding-Challenge/static/css/main.498cb179.chunk.css",
+    "main.js": "/Ecommerce-Coding-Challenge/static/js/main.fe625fff.chunk.js",
+    "main.js.map": "/Ecommerce-Coding-Challenge/static/js/main.fe625fff.chunk.js.map",
+    "runtime-main.js": "/Ecommerce-Coding-Challenge/static/js/runtime-main.393a76ec.js",
+    "runtime-main.js.map": "/Ecommerce-Coding-Challenge/static/js/runtime-main.393a76ec.js.map",
+    "static/js/2.a429bd53.chunk.js": "/Ecommerce-Coding-Challenge/static/js/2.a429bd53.chunk.js",
+    "static/js/2.a429bd53.chunk.js.map": "/Ecommerce-Coding-Challenge/static/js/2.a429bd53.chunk.js.map",
+    "index.html": "/Ecommerce-Coding-Challenge/index.html",
+    "static/css/main.498cb179.chunk.css.map": "/Ecommerce-Coding-Challenge/static/css/main.498cb179.chunk.css.map",
+    "static/js/2.a429bd53.chunk.js.LICENSE.txt": "/Ecommerce-Coding-Challenge/static/js/2.a429bd53.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.393a76ec.js",
+    "static/js/2.a429bd53.chunk.js",
+    "static/css/main.498cb179.chunk.css",
+    "static/js/main.fe625fff.chunk.js"
+  ]
+}
