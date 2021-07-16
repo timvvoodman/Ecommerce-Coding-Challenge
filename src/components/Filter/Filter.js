@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Filter.css'
 
+import { useStateValue } from '../../Context/AppState'
+
 function Filter({ onChange }) {
+  const [{ products }] = useStateValue()
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(products)
+    }, 1000)
+  })
+
   return (
     <div className="filter__form__container">
       <form className="filter__form">

@@ -12,10 +12,16 @@ import Filter from '../Filter/Filter'
 function Home() {
   //////////STATE DEFINITIONS//////////
   //Product list state (retreived from fake store API)
+  // const [{ products }] = useStateValue()
+
   const [products, setProducts] = useState({
     results: [],
     filteredResults: [],
   })
+
+  // setTimeout(() => {
+  //   console.log(products)
+  // }, 1000)
 
   //Search Term
   const [search, setSearch] = useState('')
