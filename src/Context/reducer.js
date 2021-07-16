@@ -8,8 +8,8 @@ export const initialState = {
 }
 
 //Function to compute cart total for Basket Total
-// export const getCartTotal = (cart) =>
-//   cart?.reduce((amount, item) => item.price + amount, 0)
+export const getCartTotal = (cart) =>
+  cart?.reduce((amount, item) => item.price + amount, 0)
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,6 +37,7 @@ const reducer = (state, action) => {
         ...state,
         priceFilter: action.data,
       }
+    //filter the products in global state by price range from customer dropdown (PriceFilter)
     case 'PRICE_FILTER':
       return {
         ...state,
@@ -49,12 +50,35 @@ const reducer = (state, action) => {
         ...state,
         categoryFilter: action.data,
       }
+    //filter the products in global state by category from customer dropdown (PriceFilter)
     case 'CATEGORY_FILTER':
       return {
         ...state,
         productsCopy: state.productsCopy.filter((product) => {
           return product.category === state.categoryFilter
         }),
+      }
+    //add selected product to cart, preserves current item in cart
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: [...state.cart, action.data],
+      }
+    //find the index of the cart item clicked and remove from basket state
+    case 'REMOVE_FROM_CART':
+      const index = state.cart.findIndex(
+        (cartItem) => cartItem.id === action.id
+      )
+      let newCart = [...state.cart]
+      if (index >= 0) {
+        newCart.splice(index, 1)
+      } else {
+        console.warn(`Cannot remove cart Item (id:${action.id}).
+        Does not exist in cart.`)
+      }
+      return {
+        ...state,
+        cart: newCart,
       }
 
     default:

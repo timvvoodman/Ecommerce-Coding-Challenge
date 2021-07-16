@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-//Style Imports//
 import './Header.css'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
+import { useStateValue } from '../../Context/AppState'
 
 function Header() {
+  //Get reducer and Global State
+  const [{ cart }] = useStateValue()
+
   return (
     <div>
       <div className="header">
@@ -20,7 +22,7 @@ function Header() {
         <Link to="/checkout" style={{ textDecoration: 'none' }}>
           <div className="header__basket">
             <div className="header__basket__count">
-              <span>2</span>
+              <span>{cart?.length}</span>
             </div>
 
             <ShoppingCart />

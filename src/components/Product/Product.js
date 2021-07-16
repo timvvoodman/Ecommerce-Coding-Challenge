@@ -1,9 +1,26 @@
 import React from 'react'
-
-//Style Imports//
 import './Product.css'
+import { useStateValue } from '../../Context/AppState'
 
-function Product({ title, image, price }) {
+function Product({ id, title, image, price, description, category }) {
+  //Get reducer and Global State
+  const [dispatch] = useStateValue()
+
+  // dispatch clicked product to cart state after loaded save cart to local storage
+  function addToCart() {
+    dispatch({
+      type: 'ADD_TO_CART',
+      data: {
+        id: id,
+        title: title,
+        price: price,
+        description: description,
+        category: category,
+        image: image,
+      },
+    })
+  }
+
   return (
     <div className="product">
       <div className="product__info">
@@ -14,7 +31,9 @@ function Product({ title, image, price }) {
         </p>
       </div>
       <img src={image} alt={title} />
-      <button className="product__btn">Add to Cart</button>
+      <button className="product__btn" onClick={addToCart}>
+        Add to Cart
+      </button>
     </div>
   )
 }

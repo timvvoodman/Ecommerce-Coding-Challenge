@@ -6,6 +6,7 @@ import API from './utils/axios'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home.js'
 import { useStateValue } from './Context/AppState'
+import Checkout from './components/Checkout/Checkout'
 
 function App() {
   //Bring in Reducer from context
@@ -21,19 +22,15 @@ function App() {
     loadProducts()
   }, [])
 
-  // Async API call to get product data
-  // async function loadProducts() {
-  //   try {
-  //     const response = await API.getAllProducts()
-  //     await dispatch({ type: 'FETCH-PRODUCTS', item: response.data })
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  //Get cart data from local storage and save to cart state
 
   return (
     <Router>
       <Switch>
+        <Route path="/checkout">
+          <Header />
+          <Checkout />
+        </Route>
         <Route path="/">
           <Header />
           <Home />

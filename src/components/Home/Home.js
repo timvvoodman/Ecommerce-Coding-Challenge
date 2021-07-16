@@ -10,9 +10,9 @@ import Filter from '../Filter/Filter'
 function Home() {
   //Get reducer and Global State
   const [{ productsCopy, priceSortToggle }, dispatch] = useStateValue()
-  //Search Term
+  //STATE: Search Term
   const [search, setSearch] = useState('')
-  //filter component and rule holders
+  //STATE: filter component and rule holders
   const [filterComponent, setFilterComponent] = useState(false)
 
   //Update search state when user enters search term
@@ -32,8 +32,11 @@ function Home() {
       return productsCopy?.map((product) => (
         <Product
           key={product.id}
+          id={product.id}
           title={product.title}
           image={product.image}
+          description={product.description}
+          category={product.category}
           price={product.price}
         />
       ))
@@ -42,9 +45,12 @@ function Home() {
       return filtered?.map((product) => (
         <Product
           key={product.id}
+          id={product.id}
           title={product.title}
-          image={product.image}
           price={product.price}
+          description={product.description}
+          category={product.category}
+          image={product.image}
         />
       ))
     }
@@ -68,8 +74,6 @@ function Home() {
   //   })
   // }
   ////////////END SEARCH FUNCTIONALITY//////////
-
-  ///PRODUCT FILTER FUNCTIONALITY///
 
   return (
     <div className="home">

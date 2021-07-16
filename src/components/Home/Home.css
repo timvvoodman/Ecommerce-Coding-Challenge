@@ -74,6 +74,7 @@
   background-color: var(--accent-green);
   color: var(--bg-primary-color);
   /* Misc */
+  cursor: pointer;
 }
 
 .product__container {
