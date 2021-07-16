@@ -1,7 +1,6 @@
 # 🏆 Ecommerce Coding Challenge 🏆
 
 ![Size](https://img.shields.io/github/repo-size/timvvoodman/Ecommerce-Coding-Challenge)
-![Language](https://img.shields.io/github/languages/top/Ecommerce-Coding-Challengegit)
 
 ## Description
 
