@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react'
-
-//Style Imports//
+import { useStateValue } from '../../Context/AppState'
 import './Home.css'
 import FilterList from '@material-ui/icons/FilterList'
 import Search from '@material-ui/icons/Search'
 import Sort from '@material-ui/icons/Sort'
 import Product from '../Product/Product'
-import API from '../../utils/axios'
 import Filter from '../Filter/Filter'
 
 function Home() {
   //////////STATE DEFINITIONS//////////
-  //Product list state (retreived from fake store API)
-  // const [{ products }] = useStateValue()
-
-  const [products, setProducts] = useState({
-    results: [],
-    filteredResults: [],
-  })
-
-  // setTimeout(() => {
-  //   console.log(products)
-  // }, 1000)
+  //Get reducer state
+  const [{ productsCopy }] = useStateValue()
 
   //Search Term
   const [search, setSearch] = useState('')
@@ -38,56 +27,38 @@ function Home() {
   const [priceRule, setPriceRule] = useState('')
   /////////END STATE DEFINITIONS////////
 
-  /////COMPONENT LIFECYCLE METHODS//////
-  //Calls product request to API on page load (componentDidMount)
-  useEffect(() => {
-    loadProducts()
-  }, [])
-
-  //API call to get product data
-  async function loadProducts() {
-    try {
-      const response = await API.getAllProducts()
-      setProducts({
-        results: response.data,
-        filteredResults: [...response.data],
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+  //////COMPONENT LIFECYCLE METHODS////////
   //updates products list to display based on user search, sort, filter
   //Search
-  useEffect(() => {
-    setProducts({
-      ...products,
-      filteredResults: products.filteredResults.filter((product) => {
-        return product.title.toLowerCase().includes(search)
-      }),
-    })
-  }, [search])
-  //Filter Category////////////////////
-  useEffect(() => {
-    console.log(categoryRule)
-    setProducts({
-      ...products,
-      filteredResults: products.filteredResults.filter((product) => {
-        return product.category === categoryRule
-      }),
-    })
-  }, [categoryRule])
+  // useEffect(() => {
+  //   setProducts({
+  //     ...products,
+  //     filteredResults: products.filteredResults.filter((product) => {
+  //       return product.title.toLowerCase().includes(search)
+  //     }),
+  //   })
+  // }, [search])
+  /////////////////Filter Category////////////////////
+  // useEffect(() => {
+  //   console.log(categoryRule)
+  //   setProducts({
+  //     ...products,
+  //     filteredResults: products.filteredResults.filter((product) => {
+  //       return product.category === categoryRule
+  //     }),
+  //   })
+  // }, [categoryRule])
   //Filter Price///////////////////////
-  useEffect(() => {
-    const checkedValue = parseInt(priceRule)
+  // useEffect(() => {
+  //   const checkedValue = parseInt(priceRule)
 
-    setProducts({
-      ...products,
-      filteredResults: products.filteredResults.filter((product) => {
-        return product.price >= checkedValue
-      }),
-    })
-  }, [priceRule])
+  //   setProducts({
+  //     ...products,
+  //     filteredResults: products.filteredResults.filter((product) => {
+  //       return product.price >= checkedValue
+  //     }),
+  //   })
+  // }, [priceRule])
   /////END COMPONENT LIFECYCLE METHODS////////////
 
   //////////PRODUCT SEARCH FUNCTIONALITY//////////
@@ -97,47 +68,75 @@ function Home() {
     setSearch(input)
     console.log(search)
   }
-
-  //reset search
-  function resetSearch() {
-    setProducts({
-      ...products,
-      filteredResults: products.results,
-      search: '',
+  //conditional render based on search term
+  function searchFilter() {
+    //holds items in products state that incule matched search string
+    const filtered = productsCopy.filter((product) => {
+      return product.title.toLowerCase().includes(search)
     })
-    setCategoryRule({
-      category: '',
-      price: '',
-    })
+    //if search is empty map over all products and return component
+    if (!search) {
+      return productsCopy?.map((product) => (
+        <Product
+          key={product.id}
+          title={product.title}
+          image={product.image}
+          price={product.price}
+        />
+      ))
+      // if there is a search state map only over the matched results
+    } else {
+      return filtered?.map((product) => (
+        <Product
+          key={product.id}
+          title={product.title}
+          image={product.image}
+          price={product.price}
+        />
+      ))
+    }
   }
+
+  ////reset search
+  // function resetSearch() {
+  //   setProducts({
+  //     ...products,
+  //     filteredResults: products.results,
+  //     search: '',
+  //   })
+  //   setCategoryRule({
+  //     category: '',
+  //     price: '',
+  //   })
+  // }
 
   /////PRICE SORT/////
-  function sortByPrice() {
-    if (
-      (priceSort.highToLow === false && priceSort.lowToHigh === false) ||
-      priceSort.highToLow === true
-    ) {
-      setPriceSort({ lowToHigh: true, highToLow: false })
-      setProducts({
-        ...products,
-        filteredResults: products.filteredResults.sort((a, b) => {
-          return parseFloat(a.price) - parseFloat(b.price)
-        }),
-      })
-    }
-    if (priceSort.lowToHigh === true) {
-      setPriceSort({
-        lowToHigh: false,
-        highToLow: true,
-      })
-      setProducts({
-        ...products,
-        filteredResults: products.filteredResults.sort((a, b) => {
-          return parseFloat(b.price) - parseFloat(a.price)
-        }),
-      })
-    }
-  }
+  // function sortByPrice() {
+  //   if (
+  //     (priceSort.highToLow === false && priceSort.lowToHigh === false) ||
+  //     priceSort.highToLow === true
+  //   ) {
+  //     setPriceSort({ lowToHigh: true, highToLow: false })
+  //     setProducts({
+  //       ...products,
+  //       filteredResults: products.filteredResults.sort((a, b) => {
+  //         return parseFloat(a.price) - parseFloat(b.price)
+  //       }),
+  //     })
+  //   }
+  //   if (priceSort.lowToHigh === true) {
+  //     setPriceSort({
+  //       lowToHigh: false,
+  //       highToLow: true,
+  //     })
+  //     setProducts({
+  //       ...products,
+  //       filteredResults: products.filteredResults.sort((a, b) => {
+  //         return parseFloat(b.price) - parseFloat(a.price)
+  //       }),
+  //     })
+  //   }
+  // }
   /////END PRICE SORT/////
 
   ///PRODUCT FILTER FUNCTIONALITY///
@@ -165,7 +164,7 @@ function Home() {
           ></input>
         </div>
         <div className="drop__items">
-          <div className=" filter__item filter" onClick={sortByPrice}>
+          <div className=" filter__item filter">
             <p>Price</p>
             <FilterList
               className={`filter__icon ${priceSort.lowToHigh ? 'rotate' : ''}`}
@@ -176,24 +175,13 @@ function Home() {
             <p>Filter</p>
             <Sort onClick={() => setFilterComponent(!filterComponent)} />
           </div>
-          <button onClick={resetSearch} className="filter__reset">
-            Reset
-          </button>
+          <button className="filter__reset">Reset</button>
         </div>
       </form>
 
       {filterComponent ? <Filter onChange={getFilterRules} /> : null}
 
-      <div className="product__container">
-        {products.filteredResults?.map((product) => (
-          <Product
-            key={product.id}
-            title={product.title}
-            image={product.image}
-            price={product.price}
-          />
-        ))}
-      </div>
+      <div className="product__container">{searchFilter()}</div>
     </div>
   )
 }

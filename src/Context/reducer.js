@@ -1,6 +1,6 @@
 export const initialState = {
   products: [],
-  filteredProducts: [],
+  productsCopy: [],
   cart: [],
 }
 
@@ -15,6 +15,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         products: action.data,
+        productsCopy: action.data,
       }
 
     default:

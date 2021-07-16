@@ -4,11 +4,11 @@ import './Filter.css'
 import { useStateValue } from '../../Context/AppState'
 
 function Filter({ onChange }) {
-  const [{ products }] = useStateValue()
+  const [{ productsCopy }] = useStateValue()
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(products)
+      console.log(productsCopy)
     }, 1000)
   })
 
