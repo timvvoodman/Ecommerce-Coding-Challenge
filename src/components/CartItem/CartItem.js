@@ -3,7 +3,7 @@ import './CartItem.css'
 import { useStateValue } from '../../Context/AppState'
 
 function CartItem({ id, title, image, price, description, category }) {
-  const [dispatch] = useStateValue()
+  const [{ cart }, dispatch] = useStateValue()
 
   function removeFromBasket() {
     //remove item from the cart and from local storage if no items left in cart

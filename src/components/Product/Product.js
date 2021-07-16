@@ -4,7 +4,7 @@ import { useStateValue } from '../../Context/AppState'
 
 function Product({ id, title, image, price, description, category }) {
   //Get reducer and Global State
-  const [dispatch] = useStateValue()
+  const [{ cart }, dispatch] = useStateValue()
 
   // dispatch clicked product to cart state after loaded save cart to local storage
   function addToCart() {
