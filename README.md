@@ -1,15 +1,16 @@
-# 🏆 Project Title 🏆
+# 🏆 Ecommerce Coding Challenge 🏆
 
 ![Size](https://img.shields.io/github/repo-size/timvvoodman/Ecommerce-Coding-Challenge)
-![Language](https://img.shields.io/github/languages/top/Ecommerce-Coding-Challenge)
+![Language](https://img.shields.io/github/languages/top/Ecommerce-Coding-Challengegit)
 
-## Application Description
+## Description
 
 A responsive Ecommerce site with filter, dynamic search, sort, and cart maganement functionality.
 
 ## Table of Contents
 
 - [Demo](#demo)
+- [Reflection](#reflection)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Collaborators](#collaborators)
@@ -19,6 +20,8 @@ A responsive Ecommerce site with filter, dynamic search, sort, and cart maganeme
 ## Demo
 
 View the application [Here](https://timvvoodman.github.io/Ecommerce-Coding-Challenge/)
+
+## Reflection
 
 ## Technology Stack
 
