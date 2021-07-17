@@ -2,11 +2,12 @@
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
-  justify-content: flex-start;
 }
 
 .checkout__product__info {
-  padding-left: 20px;
+  width: 50%;
+  height: 180px;
+  padding-left: 10px;
 }
 
 .checkout__product__info > button {
@@ -25,17 +26,13 @@
   cursor: pointer;
 }
 
-.checkout__roduct__info > button:hover {
+.checkout__poduct__info > button:hover {
   transform: scale(0.98);
 }
 
 .checkout__product__image {
-  object-fit: contain;
-  width: 150px;
+  width: 50%;
   height: 180px;
-}
-
-.checkout__product__image {
 }
 
 @media (min-width: 769px) {

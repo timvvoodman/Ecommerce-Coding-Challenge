@@ -15,7 +15,16 @@ function CartItem({ id, title, image, price, description, category }) {
 
   return (
     <div className="checkout__product">
-      <img className="checkout__product__image" src={image} alt={title} />
+      <div
+        className="checkout__product__image"
+        style={{
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundImage: `url(${image})`,
+        }}
+      ></div>
+
       <div className="checkout__product__info">
         <p className="checkout__product__title">{title}</p>
         <p>
