@@ -12,7 +12,7 @@ function Header() {
     <div>
       <div className="header">
         <Link
-          to="/"
+          to={process.env.PUBLIC_URL + '/'}
           className="header__logo"
           style={{ textDecoration: 'none' }}
         >

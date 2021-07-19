@@ -31,7 +31,7 @@ function App() {
           <Header />
           <Checkout />
         </Route>
-        <Route path="/">
+        <Route path={process.env.PUBLIC_URL + '/'}>
           <Header />
           <Home />
         </Route>
