@@ -13,7 +13,7 @@ function Product({ id, title, image, price, description, category }) {
       data: {
         id: id,
         title: title,
-        price: price,
+        price: parseFloat(price),
         description: description,
         category: category,
         image: image,

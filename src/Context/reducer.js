@@ -8,10 +8,14 @@ export const initialState = {
 }
 
 //Function to compute cart total for Basket Total
-export const getCartTotal = (cart) =>
-  cart?.reduce((amount, item) => item.price + amount, 0)
+export const getCartTotal = (cart) => {
+  let total = cart?.reduce((amount, item) => item.price + amount, 0)
+  return total
+}
 
 const reducer = (state, action) => {
+  console.log(action)
+
   switch (action.type) {
     case 'FETCH_PRODUCTS':
       return {
@@ -64,6 +68,7 @@ const reducer = (state, action) => {
         ...state,
         cart: [...state.cart, action.data],
       }
+
     //find the index of the cart item clicked and remove from basket state
     case 'REMOVE_FROM_CART':
       const index = state.cart.findIndex(

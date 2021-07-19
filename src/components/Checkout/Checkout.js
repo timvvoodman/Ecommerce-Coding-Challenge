@@ -22,7 +22,7 @@ function Checkout() {
               key={item.id}
               id={item.id}
               title={item.title}
-              price={item.price}
+              price={item.price.toFixed(2)}
               description={item.description}
               category={item.category}
               image={item.image}

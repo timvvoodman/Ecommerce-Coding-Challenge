@@ -10,6 +10,7 @@ import Filter from '../Filter/Filter'
 function Home() {
   //Get reducer and Global State
   const [{ productsCopy, priceSortToggle }, dispatch] = useStateValue()
+
   //STATE: Search Term
   const [search, setSearch] = useState('')
   //STATE: filter component and rule holders
@@ -19,7 +20,6 @@ function Home() {
   function handleSearchInput(event) {
     const input = event.target.value.toLowerCase()
     setSearch(input)
-    console.log(search)
   }
   //Conditional render based on search term
   function searchFilter() {
@@ -37,7 +37,7 @@ function Home() {
           image={product.image}
           description={product.description}
           category={product.category}
-          price={product.price}
+          price={product.price.toFixed(2)}
         />
       ))
       // if there is a search state map only over the matched results
@@ -47,7 +47,7 @@ function Home() {
           key={product.id}
           id={product.id}
           title={product.title}
-          price={product.price}
+          price={product.pricetoFixed(2)}
           description={product.description}
           category={product.category}
           image={product.image}
