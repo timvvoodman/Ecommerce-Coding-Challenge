@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Subtotal.css'
 import { useStateValue } from '../../Context/AppState'
 import { getCartTotal } from '../../Context/reducer'
@@ -6,10 +6,6 @@ import './Subtotal.css'
 
 function Subtotal() {
   const [{ cart }] = useStateValue()
-
-  useEffect(() => {
-    console.log(cart)
-  }, [])
 
   const cartTotal = getCartTotal(cart)
 

@@ -15,8 +15,6 @@ function Filter({ onChange }) {
   async function getCategoryRules(event) {
     await dispatch({ type: 'SET_CATEGORY_FILTER', data: event.target.value })
     dispatch({ type: 'CATEGORY_FILTER' })
-
-    console.log(event.target.value)
   }
 
   return (

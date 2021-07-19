@@ -61,18 +61,10 @@ function Home() {
     dispatch({ type: 'TOGGLE_PRICE_SORT' })
   }
 
-  ////reset search
-  // function resetSearch() {
-  //   setProducts({
-  //     ...products,
-  //     filteredResults: products.results,
-  //     search: '',
-  //   })
-  //   setCategoryRule({
-  //     category: '',
-  //     price: '',
-  //   })
-  // }
+  //reset search
+  function resetSearch() {
+    dispatch({ type: 'RESET_PRODUCTS' })
+  }
   ////////////END SEARCH FUNCTIONALITY//////////
 
   return (
@@ -99,7 +91,9 @@ function Home() {
             <p>Filter</p>
             <Sort onClick={() => setFilterComponent(!filterComponent)} />
           </div>
-          <button className="filter__reset">Reset</button>
+          <button onClick={resetSearch} className="filter__reset">
+            Reset
+          </button>
         </div>
       </form>
 

@@ -12,7 +12,7 @@ function CartItem({ id, title, image, price, description, category }) {
       id: id,
     })
   }
-  console.log(cart)
+
   return (
     <div className="checkout__product">
       <div

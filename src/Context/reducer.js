@@ -14,8 +14,6 @@ export const getCartTotal = (cart) => {
 }
 
 const reducer = (state, action) => {
-  console.log(action)
-
   switch (action.type) {
     case 'FETCH_PRODUCTS':
       return {
@@ -61,6 +59,11 @@ const reducer = (state, action) => {
         productsCopy: state.productsCopy.filter((product) => {
           return product.category === state.categoryFilter
         }),
+      }
+    case 'RESET_PROUCTS':
+      return {
+        ...state,
+        productsCopy: state.products,
       }
     //add selected product to cart, preserves current item in cart
     case 'ADD_TO_CART':
