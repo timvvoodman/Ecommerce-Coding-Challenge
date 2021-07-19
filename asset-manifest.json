@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Ecommerce-Coding-Challenge/static/css/main.b5ce5da1.chunk.css",
-    "main.js": "/Ecommerce-Coding-Challenge/static/js/main.608752f2.chunk.js",
-    "main.js.map": "/Ecommerce-Coding-Challenge/static/js/main.608752f2.chunk.js.map",
+    "main.css": "/Ecommerce-Coding-Challenge/static/css/main.8d19aa32.chunk.css",
+    "main.js": "/Ecommerce-Coding-Challenge/static/js/main.b0426c83.chunk.js",
+    "main.js.map": "/Ecommerce-Coding-Challenge/static/js/main.b0426c83.chunk.js.map",
     "runtime-main.js": "/Ecommerce-Coding-Challenge/static/js/runtime-main.393a76ec.js",
     "runtime-main.js.map": "/Ecommerce-Coding-Challenge/static/js/runtime-main.393a76ec.js.map",
-    "static/js/2.4498fb23.chunk.js": "/Ecommerce-Coding-Challenge/static/js/2.4498fb23.chunk.js",
-    "static/js/2.4498fb23.chunk.js.map": "/Ecommerce-Coding-Challenge/static/js/2.4498fb23.chunk.js.map",
+    "static/js/2.a521bc62.chunk.js": "/Ecommerce-Coding-Challenge/static/js/2.a521bc62.chunk.js",
+    "static/js/2.a521bc62.chunk.js.map": "/Ecommerce-Coding-Challenge/static/js/2.a521bc62.chunk.js.map",
     "index.html": "/Ecommerce-Coding-Challenge/index.html",
-    "static/css/main.b5ce5da1.chunk.css.map": "/Ecommerce-Coding-Challenge/static/css/main.b5ce5da1.chunk.css.map",
-    "static/js/2.4498fb23.chunk.js.LICENSE.txt": "/Ecommerce-Coding-Challenge/static/js/2.4498fb23.chunk.js.LICENSE.txt"
+    "static/css/main.8d19aa32.chunk.css.map": "/Ecommerce-Coding-Challenge/static/css/main.8d19aa32.chunk.css.map",
+    "static/js/2.a521bc62.chunk.js.LICENSE.txt": "/Ecommerce-Coding-Challenge/static/js/2.a521bc62.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.393a76ec.js",
-    "static/js/2.4498fb23.chunk.js",
-    "static/css/main.b5ce5da1.chunk.css",
-    "static/js/main.608752f2.chunk.js"
+    "static/js/2.a521bc62.chunk.js",
+    "static/css/main.8d19aa32.chunk.css",
+    "static/js/main.b0426c83.chunk.js"
   ]
 }
